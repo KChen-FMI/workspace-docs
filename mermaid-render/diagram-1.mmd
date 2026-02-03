@@ -1,0 +1,12 @@
+flowchart TD
+    A[オーダー発生] --> B[ユーザ情報確定待ち]
+    B --> C[Intune 登録]
+    C --> D[Autopilot 登録]
+    D --> E[Autopilot 実行]
+    E --> F[ソフト配布待ち 約半日]
+    F --> G{配布完了確認}
+    G -->|OK| H[個人設定]
+    G -->|NG| F
+    H --> I[VPN 設定]
+    I --> J[最終確認]
+    J --> K[引き渡し]

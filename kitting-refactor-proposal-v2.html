@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>kitting-refactor-proposal-v2</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style>
+body { font-family: "Yu Gothic", "YuGothic", "Meiryo", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "MS PGothic", sans-serif; }
+code, pre { font-family: "Consolas", "Cascadia Mono", "MS Gothic", monospace; }
+.mermaid-block { margin: 16px 0; }
+.mermaid-block img { max-width: 100%; height: auto; }
+</style>
+
+</head>
+<body>
+<h1 id="キッティング手順-改修案-v2red-team反映版">キッティング手順
+改修案 v2（Red Team反映版）</h1>
+<h2 id="目的と前提">1. 目的と前提</h2>
+<h3 id="目的">目的</h3>
+<ul>
+<li><strong>人の拘束時間（ハンズオン）を最小化</strong>する</li>
+<li><strong>Autopilotの待ち時間を人の作業線から排除</strong>する</li>
+<li>外注 ×
+オーダー不定期という制約下でも<strong>破綻しない運用</strong>にする</li>
+</ul>
+<h3 id="前提条件">前提条件</h3>
+<ul>
+<li>外注作業が前提</li>
+<li>オーダーは不定期・少量</li>
+<li>在庫作業は極小化したい</li>
+</ul>
+<hr />
+<h2 id="as-is現行フロー">2. As-Is（現行フロー）</h2>
+<div class="mermaid-block"><img src="mermaid-render/diagram-1.png" alt="Mermaid diagram 1" /></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_B_C_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_C_D_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_D_E_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_E_F_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_F_G_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(120.4140625, 843)"><g class="label" data-id="L_G_H_0" transform="translate(-10, -12)"><foreignObject width="20" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>OK</p></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(135.10628, 623.15172)"><g class="label" data-id="L_G_F_0" transform="translate(-10.515625, -12)"><foreignObject width="21.03125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>NG</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_H_I_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_I_J_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_J_K_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-A-0" transform="translate(120.4140625, 35)"><rect class="basic label-container" style="" x="-78" y="-27" width="156" height="54"/><g class="label" style="" transform="translate(-48, -12)"><rect/><foreignObject width="96" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>オーダー発生</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-B-1" transform="translate(120.4140625, 139)"><rect class="basic label-container" style="" x="-101.84375" y="-27" width="203.6875" height="54"/><g class="label" style="" transform="translate(-71.84375, -12)"><rect/><foreignObject width="143.6875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>ユーザ情報確定待ち</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-C-3" transform="translate(120.4140625, 243)"><rect class="basic label-container" style="" x="-71.2890625" y="-27" width="142.578125" height="54"/><g class="label" style="" transform="translate(-41.2890625, -12)"><rect/><foreignObject width="82.578125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Intune 登録</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-D-5" transform="translate(120.4140625, 347)"><rect class="basic label-container" style="" x="-81.53125" y="-27" width="163.0625" height="54"/><g class="label" style="" transform="translate(-51.53125, -12)"><rect/><foreignObject width="103.0625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Autopilot 登録</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-E-7" transform="translate(120.4140625, 451)"><rect class="basic label-container" style="" x="-81.53125" y="-27" width="163.0625" height="54"/><g class="label" style="" transform="translate(-51.53125, -12)"><rect/><foreignObject width="103.0625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Autopilot 実行</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-F-9" transform="translate(120.4140625, 555)"><rect class="basic label-container" style="" x="-112.4140625" y="-27" width="224.828125" height="54"/><g class="label" style="" transform="translate(-82.4140625, -12)"><rect/><foreignObject width="164.828125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>ソフト配布待ち 約半日</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-G-11" transform="translate(120.4140625, 731)"><polygon points="75,0 150,-75 75,-150 0,-75" class="label-container" transform="translate(-74.5, 75)"/><g class="label" style="" transform="translate(-48, -12)"><rect/><foreignObject width="96" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>配布完了確認</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-H-13" transform="translate(120.4140625, 907)"><rect class="basic label-container" style="" x="-62" y="-27" width="124" height="54"/><g class="label" style="" transform="translate(-32, -12)"><rect/><foreignObject width="64" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>個人設定</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-I-17" transform="translate(120.4140625, 1011)"><rect class="basic label-container" style="" x="-62.6796875" y="-27" width="125.359375" height="54"/><g class="label" style="" transform="translate(-32.6796875, -12)"><rect/><foreignObject width="65.359375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>VPN 設定</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-J-19" transform="translate(120.4140625, 1115)"><rect class="basic label-container" style="" x="-62" y="-27" width="124" height="54"/><g class="label" style="" transform="translate(-32, -12)"><rect/><foreignObject width="64" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>最終確認</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-K-21" transform="translate(120.4140625, 1219)"><rect class="basic label-container" style="" x="-62" y="-27" width="124" height="54"/><g class="label" style="" transform="translate(-32, -12)"><rect/><foreignObject width="64" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>引き渡し</p></span></div></foreignObject></g></g></g></g></g></svg></div>
+<h3 id="as-isの問題点">As-Isの問題点</h3>
+<ul>
+<li>Autopilot（非同期処理）が<strong>人の作業主線</strong>に乗っている</li>
+<li>ユーザ確定が起点となり、<strong>前倒し可能な工程が全て後段化</strong></li>
+<li>配布（デバイス工程）と利用開始（ユーザ工程）が混在</li>
+</ul>
+<hr />
+<h2 id="to-be改修案-v3entra中心adリソース分離案">3. To-Be（改修案
+v3：Entra中心／ADリソース分離案）</h2>
+<h3 id="基本方針更新">基本方針（更新）</h3>
+<ul>
+<li><strong>PCセットアップとユーザ割当は Entra / Intune
+で完結</strong>させる</li>
+<li><strong>ADはPC管理に関与させず</strong>、AD管理リソース利用時のみ関与</li>
+<li>作り置きPCは <strong>Entra Join + DoD 完了状態</strong>で待機</li>
+</ul>
+<hr />
+<h3 id="to-be-フローentra中心ad分離">To-Be
+フロー（Entra中心・AD分離）</h3>
+<div class="mermaid-block"><img src="mermaid-render/diagram-2.png" alt="Mermaid diagram 2" /></div></foreignObject></g></g><g class="cluster" id="常時運用" data-look="classic"><rect style="" x="19.72265625" y="115.8125" width="330" height="568"/><g class="cluster-label" transform="translate(84.72265625, 115.8125)"><foreignObject width="200" height="48"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel"><p>常時運用：EntraでPC前準備（AD不関与）</p></span></div></foreignObject></g></g></g><g class="edgePaths"><path d="M184.723,65.813L184.723,69.979C184.723,74.146,184.723,82.479,184.723,90.813C184.723,99.146,184.723,107.479,184.723,115.146C184.723,122.813,184.723,129.813,184.723,133.313L184.723,136.813" id="L_S_A1_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_S_A1_0" data-points="W3sieCI6MTg0LjcyMjY1NjI1LCJ5Ijo2NS44MTI1fSx7IngiOjE4NC43MjI2NTYyNSwieSI6OTAuODEyNX0seyJ4IjoxODQuNzIyNjU2MjUsInkiOjExNS44MTI1fSx7IngiOjE4NC43MjI2NTYyNSwieSI6MTQwLjgxMjV9XQ==" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M184.723,194.813L184.723,198.979C184.723,203.146,184.723,211.479,184.723,219.146C184.723,226.813,184.723,233.813,184.723,237.313L184.723,240.813" id="L_A1_A2_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A1_A2_0" data-points="W3sieCI6MTg0LjcyMjY1NjI1LCJ5IjoxOTQuODEyNX0seyJ4IjoxODQuNzIyNjU2MjUsInkiOjIxOS44MTI1fSx7IngiOjE4NC43MjI2NTYyNSwieSI6MjQ0LjgxMjV9XQ==" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M184.723,298.813L184.723,302.979C184.723,307.146,184.723,315.479,184.723,323.146C184.723,330.813,184.723,337.813,184.723,341.313L184.723,344.813" id="L_A2_A3_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A2_A3_0" data-points="W3sieCI6MTg0LjcyMjY1NjI1LCJ5IjoyOTguODEyNX0seyJ4IjoxODQuNzIyNjU2MjUsInkiOjMyMy44MTI1fSx7IngiOjE4NC43MjI2NTYyNSwieSI6MzQ4LjgxMjV9XQ==" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M184.723,402.813L184.723,406.979C184.723,411.146,184.723,419.479,184.723,427.146C184.723,434.813,184.723,441.813,184.723,445.313L184.723,448.813" id="L_A3_A4_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A3_A4_0" data-points="W3sieCI6MTg0LjcyMjY1NjI1LCJ5Ijo0MDIuODEyNX0seyJ4IjoxODQuNzIyNjU2MjUsInkiOjQyNy44MTI1fSx7IngiOjE4NC43MjI2NTYyNSwieSI6NDUyLjgxMjV9XQ==" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M184.723,530.813L184.723,534.979C184.723,539.146,184.723,547.479,184.723,555.146C184.723,562.813,184.723,569.813,184.723,573.313L184.723,576.813" id="L_A4_A5_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A4_A5_0" data-points="W3sieCI6MTg0LjcyMjY1NjI1LCJ5Ijo1MzAuODEyNX0seyJ4IjoxODQuNzIyNjU2MjUsInkiOjU1NS44MTI1fSx7IngiOjE4NC43MjI2NTYyNSwieSI6NTgwLjgxMjV9XQ==" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M184.723,658.813L184.723,662.979C184.723,667.146,184.723,675.479,184.723,685.813C184.723,696.146,184.723,708.479,184.723,720.813C184.723,733.146,184.723,745.479,184.723,755.146C184.723,764.813,184.723,771.813,184.723,775.313L184.723,778.813" id="L_A5_E1_0" class="edge-thickness-normal edge-pattern-dotted edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A5_E1_0" data-points="W3sieCI6MTg0LjcyMjY1NjI1LCJ5Ijo2NTguODEyNX0seyJ4IjoxODQuNzIyNjU2MjUsInkiOjY4My44MTI1fSx7IngiOjE4NC43MjI2NTYyNSwieSI6NzIwLjgxMjV9LHsieCI6MTg0LjcyMjY1NjI1LCJ5Ijo3NTcuODEyNX0seyJ4IjoxODQuNzIyNjU2MjUsInkiOjc4Mi44MTI1fV0=" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M184.723,893.5L184.723,897.667C184.723,901.833,184.723,910.167,184.723,917.833C184.723,925.5,184.723,932.5,184.723,936L184.723,939.5" id="L_E1_B1_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_E1_B1_0" data-points="W3sieCI6MTg0LjcyMjY1NjI1LCJ5Ijo4OTMuNX0seyJ4IjoxODQuNzIyNjU2MjUsInkiOjkxOC41fSx7IngiOjE4NC43MjI2NTYyNSwieSI6OTQzLjV9XQ==" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M184.723,997.5L184.723,1001.667C184.723,1005.833,184.723,1014.167,184.723,1021.833C184.723,1029.5,184.723,1036.5,184.723,1040L184.723,1043.5" id="L_B1_B2_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B1_B2_0" data-points="W3sieCI6MTg0LjcyMjY1NjI1LCJ5Ijo5OTcuNX0seyJ4IjoxODQuNzIyNjU2MjUsInkiOjEwMjIuNX0seyJ4IjoxODQuNzIyNjU2MjUsInkiOjEwNDcuNX1d" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M184.723,1125.5L184.723,1129.667C184.723,1133.833,184.723,1142.167,184.723,1149.833C184.723,1157.5,184.723,1164.5,184.723,1168L184.723,1171.5" id="L_B2_B3_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B2_B3_0" data-points="W3sieCI6MTg0LjcyMjY1NjI1LCJ5IjoxMTI1LjV9LHsieCI6MTg0LjcyMjY1NjI1LCJ5IjoxMTUwLjV9LHsieCI6MTg0LjcyMjY1NjI1LCJ5IjoxMTc1LjV9XQ==" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M184.723,1229.5L184.723,1233.667C184.723,1237.833,184.723,1246.167,184.723,1253.833C184.723,1261.5,184.723,1268.5,184.723,1272L184.723,1275.5" id="L_B3_B4_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B3_B4_0" data-points="W3sieCI6MTg0LjcyMjY1NjI1LCJ5IjoxMjI5LjV9LHsieCI6MTg0LjcyMjY1NjI1LCJ5IjoxMjU0LjV9LHsieCI6MTg0LjcyMjY1NjI1LCJ5IjoxMjc5LjV9XQ==" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M171.483,1357.5L169.389,1363.667C167.296,1369.833,163.109,1382.167,161.015,1397.833C158.922,1413.5,158.922,1432.5,158.922,1442L158.922,1451.5" id="L_B4_B5_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B4_B5_0" data-points="W3sieCI6MTcxLjQ4Mjc4MTY2MTE4NDIyLCJ5IjoxMzU3LjV9LHsieCI6MTU4LjkyMTg3NSwieSI6MTM5NC41fSx7IngiOjE1OC45MjE4NzUsInkiOjE0NTUuNX1d" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M213.818,1357.5L218.419,1363.667C223.019,1369.833,232.221,1382.167,260.07,1395.819C287.92,1409.472,334.417,1424.444,357.666,1431.929L380.915,1439.415" id="L_B4_C1_0" class="edge-thickness-normal edge-pattern-dotted edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B4_C1_0" data-points="W3sieCI6MjEzLjgxODMwNzk3Njk3MzcsInkiOjEzNTcuNX0seyJ4IjoyNDEuNDIxODc1LCJ5IjoxMzk0LjV9LHsieCI6Mzg0LjcyMjY1NjI1LCJ5IjoxNDQwLjY0MTM1NjM5MjQ4Mn1d" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M514.723,1533.5L514.723,1537.667C514.723,1541.833,514.723,1550.167,514.723,1558.5C514.723,1566.833,514.723,1575.167,514.723,1582.833C514.723,1590.5,514.723,1597.5,514.723,1601L514.723,1604.5" id="L_C1_C2_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C1_C2_0" data-points="W3sieCI6NTE0LjcyMjY1NjI1LCJ5IjoxNTMzLjV9LHsieCI6NTE0LjcyMjY1NjI1LCJ5IjoxNTU4LjV9LHsieCI6NTE0LjcyMjY1NjI1LCJ5IjoxNTgzLjV9LHsieCI6NTE0LjcyMjY1NjI1LCJ5IjoxNjA4LjV9XQ==" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_S_A1_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_A1_A2_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_A2_A3_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_A3_A4_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_A4_A5_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(184.72265625, 720.8125)"><g class="label" data-id="L_A5_E1_0" transform="translate(-32, -12)"><foreignObject width="64" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>イベント</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_E1_B1_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_B1_B2_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_B2_B3_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_B3_B4_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_B4_B5_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(291.10195, 1410.49647)"><g class="label" data-id="L_B4_C1_0" transform="translate(-31.6015625, -12)"><foreignObject width="63.203125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>アクセス</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_C1_C2_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-S-0" transform="translate(184.72265625, 36.90625)"><circle class="basic label-container" style="" r="28.90625" cx="0" cy="0"/><g class="label" style="" transform="translate(-21.40625, -12)"><rect/><foreignObject width="42.8125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>START</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-A1-1" transform="translate(184.72265625, 167.8125)"><rect class="basic label-container" style="" x="-83.5546875" y="-27" width="167.109375" height="54"/><g class="label" style="" transform="translate(-53.5546875, -12)"><rect/><foreignObject width="107.109375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>PCをEntra Join</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-A2-4" transform="translate(184.72265625, 271.8125)"><rect class="basic label-container" style="" x="-100.875" y="-27" width="201.75" height="54"/><g class="label" style="" transform="translate(-70.875, -12)"><rect/><foreignObject width="141.75" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Intune管理下に登録</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-A3-6" transform="translate(184.72265625, 375.8125)"><rect class="basic label-container" style="" x="-117.765625" y="-27" width="235.53125" height="54"/><g class="label" style="" transform="translate(-87.765625, -12)"><rect/><foreignObject width="175.53125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>デバイス共通アプリ配布</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-A4-8" transform="translate(184.72265625, 491.8125)"><rect class="basic label-container" style="" x="-130" y="-39" width="260" height="78"/><g class="label" style="" transform="translate(-100, -24)"><rect/><foreignObject width="200" height="48"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel"><p>DoD実行（ユーザ痕跡ゼロ化）</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-A5-10" transform="translate(184.72265625, 619.8125)"><rect class="basic label-container" style="" x="-130" y="-39" width="260" height="78"/><g class="label" style="" transform="translate(-100, -24)"><rect/><foreignObject width="200" height="48"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel"><p>待機PC（誰もログインしていない）</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-E1-12" transform="translate(184.72265625, 838.15625)"><circle class="basic label-container" style="" r="55.34375" cx="0" cy="0"/><g class="label" style="" transform="translate(-47.84375, -12)"><rect/><foreignObject width="95.6875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>新ユーザ入社</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-B1-14" transform="translate(184.72265625, 970.5)"><rect class="basic label-container" style="" x="-106.53125" y="-27" width="213.0625" height="54"/><g class="label" style="" transform="translate(-76.53125, -12)"><rect/><foreignObject width="153.0625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Entra IDにユーザ作成</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-B2-16" transform="translate(184.72265625, 1086.5)"><rect class="basic label-container" style="" x="-130" y="-39" width="260" height="78"/><g class="label" style="" transform="translate(-100, -24)"><rect/><foreignObject width="200" height="48"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel"><p>必要に応じてADにもユーザ作成</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-B3-18" transform="translate(184.72265625, 1202.5)"><rect class="basic label-container" style="" x="-111.09375" y="-27" width="222.1875" height="54"/><g class="label" style="" transform="translate(-81.09375, -12)"><rect/><foreignObject width="162.1875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>ユーザをPCにアサイン</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-B4-20" transform="translate(184.72265625, 1318.5)"><rect class="basic label-container" style="" x="-130" y="-39" width="260" height="78"/><g class="label" style="" transform="translate(-100, -24)"><rect/><foreignObject width="200" height="48"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel"><p>ユーザがEntra IDでPCに初回ログイン</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-B5-22" transform="translate(158.921875, 1482.5)"><rect class="basic label-container" style="" x="-101.84375" y="-27" width="203.6875" height="54"/><g class="label" style="" transform="translate(-71.84375, -12)"><rect/><foreignObject width="143.6875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>ユーザ依存設定適用</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-C1-23" transform="translate(514.72265625, 1482.5)"><rect class="basic label-container" style="" x="-130" y="-51" width="260" height="102"/><g class="label" style="" transform="translate(-100, -36)"><rect/><foreignObject width="200" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel"><p>AD管理下リソース<br />(ファイルサーバ / Wi-Fi / プリンタ)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-C2-27" transform="translate(514.72265625, 1635.5)"><rect class="basic label-container" style="" x="-55.625" y="-27" width="111.25" height="54"/><g class="label" style="" transform="translate(-25.625, -12)"><rect/><foreignObject width="51.25" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>AD認証</p></span></div></foreignObject></g></g></g></g></g></svg></div>
+<hr />
+<h3 id="ポイント整理">ポイント整理</h3>
+<ul>
+<li><strong>PCは一貫してEntra管理</strong>。AD Join は行わない</li>
+<li>ユーザは Entra ID を主IDとしてログイン</li>
+<li>AD は「リソース利用時の認証先」としてのみ関与</li>
+<li>新ユーザ作成は <strong>Entra →（必要なら）AD</strong> の順</li>
+</ul>
+<hr />
+<h3 id="補充が回らずas-isに戻るリスク最重要">4.1
+補充が回らずAs-Isに戻るリスク（最重要）</h3>
+<p><strong>対策：補充を納品完了条件に昇格</strong></p>
+<ul>
+<li><p>納品完了（Definition of Done）を以下とする</p>
+<ol type="1">
+<li>ユーザPC引き渡し完了</li>
+<li><strong>待機PCが2台に復帰していること</strong></li>
+</ol></li>
+<li><p>上記を満たさない場合、検収不可（またはSLA未達）</p></li>
+<li><p>待機PC在庫は<strong>常時オープンの定常チケット</strong>で管理</p></li>
+</ul>
+<hr />
+<h3 id="前準備完了の曖昧化リスク">4.2 前準備完了の曖昧化リスク</h3>
+<p><strong>対策：前準備完了を「判定可能な3点」に固定</strong></p>
+<p>前準備完了 = 以下すべてOK</p>
+<ol type="1">
+<li>Autopilot登録済み（Assigned）</li>
+<li>Intune管理下（MDM = Intune）</li>
+<li>必須デバイスアプリが <strong>Installed</strong> 状態</li>
+</ol>
+<p>※ Outlook利用可、VPN接続可などは<strong>含めない</strong></p>
+<hr />
+<h3 id="ユーザ依存設定の混入リスク">4.3 ユーザ依存設定の混入リスク</h3>
+<p><strong>対策：禁則ルールを明文化</strong></p>
+<ul>
+<li><p>待機PCには以下を<strong>入れない</strong></p>
+<ul>
+<li>ユーザ割当アプリ</li>
+<li>ユーザ依存ポリシー</li>
+<li>ユーザ必須ESP条件</li>
+</ul></li>
+<li><p>待機用デバイスグループを固定し、割当を分離</p></li>
+</ul>
+<hr />
+<h3 id="外注手順逸脱保管不備リスク">4.4
+外注手順逸脱・保管不備リスク</h3>
+<p><strong>対策：最低限のガバナンスを固定</strong></p>
+<ul>
+<li><p>保管場所は1か所固定</p></li>
+<li><p>待機PCには管理番号ラベルを貼付</p></li>
+<li><p>台帳（SharePoint等）で以下4項目のみ管理</p>
+<ul>
+<li>管理番号 / 状態 / 最終作業者 / 最終更新日</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="kpi客観指標のみ">5. KPI（客観指標のみ）</h2>
+<ul>
+<li>待機PC <strong>2台維持率</strong>（日次）</li>
+<li>オーダー後の <strong>ハンズオン時間（分/台）</strong></li>
+<li>隠れ待ち発生回数（Installed待ち等）</li>
+</ul>
+<p>※ 主観評価はKPIに含めない</p>
+<hr />
+<h2 id="まとめ意思決定ポイント">6. まとめ（意思決定ポイント）</h2>
+<ul>
+<li>本改修案の価値は<strong>技術ではなく運用強制力</strong>にある</li>
+<li>補充を検収条件に組み込むことで、To-Beは時間経過でも崩れない</li>
+<li>在庫は2台限定のため、外注・不定期オーダーでも心理的負担が小さい</li>
+</ul>
+<p>この条件を受け入れられるなら、本案は実行可能かつ効果が出る。</p>
+</body>
+</html>

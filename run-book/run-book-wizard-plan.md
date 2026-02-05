@@ -1,4 +1,5 @@
 # Run-book Wizard Plan: 業務カタログ自動更新 + FMI社内IT業務の分け方
+最終更新日: 2026-02-05
 
 ## 目的
 - 業務カタログを **最低限のマニュアルワーク** で維持する
@@ -12,10 +13,45 @@
 > 人間は決める  
 > LLMは材料を揃える
 
-- LLMは **判断・更新を行わない**
+- LLMは **判断・更新を行わない（判断の材料とTierを提示）**
 - Wizardは **差分と影響を可視化する**
 - 業務カタログは **1サービス＝1行（Single Source of Truth）** を維持する
 - 多テーブル正規化は初期段階では行わない
+
+---
+
+## Red Team対応方針（壊れにくさの補強）
+
+### 1) 判断を3段階に落とす（Decision Tier）
+全件承認をやめ、**人が本当に決断すべきものだけ前に出す**。
+
+| Tier | 意味 | 人の関与 |
+| --- | --- | --- |
+| Tier 0 | 既存サービスに影響なし（証跡追加のみ） | 自動反映OK |
+| Tier 1 | 既存サービスの説明/リンク更新 | 後追い承認（まとめて） |
+| Tier 2 | サービス定義変更 / 新規 | 事前承認必須 |
+
+### 2) SSOTは1行、履歴は別物（Decision Log）
+理由・時系列・承認者を**1行SSOT内に必須記録**する。
+
+```yaml
+decision_log:
+  - date: 2026-02-01
+    type: update
+    reason: 規程第12条改訂に伴う反映
+    evidence: 規程PDF p.4
+    approved_by: Chen
+```
+
+### 3) KBとタスクの混在を防ぐ（役割で線を引く）
+- KB: 判断・例外・注意点・背景を書く（Why）
+- タスク（Activity）: 実行可能な最小手順のみ（How）
+- **KB → タスク参照はOK / タスク → KB参照はNG**
+
+### 4) Intakeは入口ではなく回収装置
+入口統一は諦め、**後から必ず回収する**運用にする。
+- Slack / 口頭 / 直依頼 → チケット or Onepage を後付け
+- Wizardは **定期スキャン** で未反映を回収
 
 ---
 
@@ -34,6 +70,7 @@ flowchart LR
   subgraph IN[Intake（投入箱）]
     F1[所定フォルダ / フォーム]
     IR[Intakeレコード（1行）]
+    SCN[定期スキャン（回収）]
   end
 
   subgraph AI[LLM分析]
@@ -44,6 +81,7 @@ flowchart LR
   subgraph WZ[Wizard]
     CAND[既存サービス候補\n最大3件]
     DIFF[差分（diff）表示]
+    TIER[Decision Tier判定]
     DEC{新規 or 更新}
   end
 
@@ -52,11 +90,13 @@ flowchart LR
     EV[根拠リンク]
   end
 
-  R1 --> F1 --> IR --> EX --> JR --> CAND --> DIFF --> DEC
+  R1 --> F1 --> IR --> EX --> JR --> CAND --> DIFF --> TIER --> DEC
   R2 --> F1
   R3 --> F1
   R4 --> F1
   R5 --> F1
+
+  SCN --> IR
 
   DEC --> SV
   JR -.参照.-> EV

@@ -12,6 +12,7 @@ flowchart LR
     R3[JIRAチケット]
     R4[インシデント（JIRA）]
     R5[単発プロジェクト]
+    R6[OneNote]
   end
 
   subgraph SC[サービスカタログ]
@@ -23,6 +24,7 @@ flowchart LR
   R3 -. "0..多" .-> SV
   R4 -. "0..多" .-> SV
   R5 -. "0..多" .-> SV
+  R6 -. "0..多" .-> SV
 
   classDef service fill:#eef3ff,stroke:#556,stroke-width:1px;
 ```

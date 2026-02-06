@@ -1,0 +1,35 @@
+{
+  "doc_id": "04-0080",
+  "title": "固定資産管理規程",
+  "doc_type": "規程",
+  "effective_dates": [
+    "2013-02-15"
+  ],
+  "revision_history": [
+    {
+      "date": "2013-02-15",
+      "type": "施行",
+      "note": "1 この規程は､2013年2月15日より施行する｡"
+    },
+    {
+      "date": "2018-05-01",
+      "type": "改正施行",
+      "note": "2 この規程は､2018年5月1日より改正施行する｡"
+    }
+  ],
+  "scope_assets": [],
+  "roles": [],
+  "responsibilities": [
+    "固定資産の取得、維持・管理、処分に関する事項",
+    "固定資産管理台帳の整備及び保管",
+    "固定資産の利用に関する役職員（当会社の業務に従事する当会社における全ての",
+    "その他固定資産に関する事項"
+  ],
+  "prohibitions": [],
+  "reporting_triggers": [],
+  "required_actions": [],
+  "evidence_links": [
+    "c:\\CC.Playground\\fmi-projects\\workspace-docs\\run-book\\POC\\Testdata\\04-0080_固定資産管理規程_20260201.pdf"
+  ],
+  "reviewer_notes": ""
+}

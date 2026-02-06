@@ -1,0 +1,37 @@
+{
+  "doc_id": "04-0090",
+  "title": "貸与品取扱規程",
+  "doc_type": "規程",
+  "effective_dates": [
+    "2012-06-01"
+  ],
+  "revision_history": [
+    {
+      "date": "2012-06-01",
+      "type": "施行",
+      "note": "1 この規程は2012年6月1日より施行する。"
+    },
+    {
+      "date": "2013-01-21",
+      "type": "改正施行",
+      "note": "2 この規程は2013年1月21日より改正施行する。"
+    },
+    {
+      "date": "2018-05-01",
+      "type": "改正施行",
+      "note": "3 この規程は2018年5月1日より改正施行する。"
+    }
+  ],
+  "scope_assets": [],
+  "roles": [],
+  "responsibilities": [],
+  "prohibitions": [],
+  "reporting_triggers": [
+    "業務上の目的以外の目的で使用すること。"
+  ],
+  "required_actions": [],
+  "evidence_links": [
+    "c:\\CC.Playground\\fmi-projects\\workspace-docs\\run-book\\POC\\Testdata\\04-0090_貸与品取扱規程_20250301.pdf"
+  ],
+  "reviewer_notes": ""
+}

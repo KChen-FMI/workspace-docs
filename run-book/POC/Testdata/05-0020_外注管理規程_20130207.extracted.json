@@ -1,0 +1,30 @@
+{
+  "doc_id": "05-0020",
+  "title": "外注管理規程",
+  "doc_type": "規程",
+  "effective_dates": [
+    "2012-01-01"
+  ],
+  "revision_history": [
+    {
+      "date": "2012-01-01",
+      "type": "施行",
+      "note": "1 この規程は2012年 1月 1日から施行する。"
+    },
+    {
+      "date": "2013-02-07",
+      "type": "改正施行",
+      "note": "2 この規程は2013年 2月 7日から改正施行する。"
+    }
+  ],
+  "scope_assets": [],
+  "roles": [],
+  "responsibilities": [],
+  "prohibitions": [],
+  "reporting_triggers": [],
+  "required_actions": [],
+  "evidence_links": [
+    "c:\\CC.Playground\\fmi-projects\\workspace-docs\\run-book\\POC\\Testdata\\05-0020_外注管理規程_20130207.pdf"
+  ],
+  "reviewer_notes": ""
+}

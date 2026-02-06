@@ -1,0 +1,35 @@
+{
+  "doc_id": "04-0070",
+  "title": "購買管理規程",
+  "doc_type": "規程",
+  "effective_dates": [
+    "2013-02-15"
+  ],
+  "revision_history": [
+    {
+      "date": "2013-02-15",
+      "type": "施行",
+      "note": "1 この規程は、2013年 2月15日から施行する。"
+    },
+    {
+      "date": "2018-05-01",
+      "type": "改正施行",
+      "note": "2 この規程は、2018年 5月1日から改正施行する。"
+    }
+  ],
+  "scope_assets": [],
+  "roles": [],
+  "responsibilities": [
+    "本規程の周知・徹底",
+    "当会社における購買の状況の把握及び監督",
+    "購買に関する役職員（当会社の業務に従事する当会社における全ての者をいう。以",
+    "その他購買に関する事項"
+  ],
+  "prohibitions": [],
+  "reporting_triggers": [],
+  "required_actions": [],
+  "evidence_links": [
+    "c:\\CC.Playground\\fmi-projects\\workspace-docs\\run-book\\POC\\Testdata\\04-0070_購買管理規程_20250301.pdf"
+  ],
+  "reviewer_notes": ""
+}

@@ -1,0 +1,381 @@
+{
+  "rows": [
+    [
+      "01-0080_内部統制システムの基本方針_20240327.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "03-0130_在宅勤務規程_20251001改正.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "03-0131_遠隔地勤務規程_20251001改正.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 1,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "04-0020_危機管理規程_20240327.pdf",
+      {
+        "effective_dates": 1,
+        "revision_history": 7,
+        "scope_assets": 1,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "04-0030_規程等管理規程_20250301.pdf",
+      {
+        "effective_dates": 1,
+        "revision_history": 7,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "04-0040_文書管理規程_20250301.pdf",
+      {
+        "effective_dates": 1,
+        "revision_history": 5,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "04-0050_文書管理規程運用細則_20250301.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "04-0070_購買管理規程_20250301.pdf",
+      {
+        "effective_dates": 1,
+        "revision_history": 2,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 4,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "04-0080_固定資産管理規程_20260201.pdf",
+      {
+        "effective_dates": 1,
+        "revision_history": 2,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 4,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "04-0090_貸与品取扱規程_20250301.pdf",
+      {
+        "effective_dates": 1,
+        "revision_history": 3,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 1,
+        "required_actions": 0
+      }
+    ],
+    [
+      "04-0090_貸与品取扱規程_貸与品取扱規程の実費負担額_20120612.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "05-0020_外注管理規程_20130207.pdf",
+      {
+        "effective_dates": 1,
+        "revision_history": 2,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "05-0080_案件資料共有マニュアル_20240901.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "06-0040_財務報告に係る内部統制の構築の基本方針書_20260201.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 1,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "06-0050_財務報告に係る内部統制の整備･運用及び評価の基本方針書_20121115.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 1,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "06-0060_財務報告に係る内部統制の整備・運用及び評価の基本計画書_202412.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "07-0080_インサイダー取引防止規程_20240327.pdf",
+      {
+        "effective_dates": 1,
+        "revision_history": 4,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "07-0080_インサイダー取引防止規程の解説_20250813.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "07-0090_情報セキュリティ基本方針_20130207.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "07-0100_機密管理規程_20250812.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "07-0110_機密管理運用細則_20250812.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "07-0120_情報システム管理規程_20250301.pdf",
+      {
+        "effective_dates": 1,
+        "revision_history": 4,
+        "scope_assets": 10,
+        "roles": 2,
+        "responsibilities": 5,
+        "prohibitions": 12,
+        "reporting_triggers": 6,
+        "required_actions": 1
+      }
+    ],
+    [
+      "07-0130_個人情報・特定個人情報保護規程_20250301.pdf",
+      {
+        "effective_dates": 1,
+        "revision_history": 4,
+        "scope_assets": 2,
+        "roles": 0,
+        "responsibilities": 6,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "07-0140_内部情報管理規程_20201015.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 8,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "07-0150_内部情報管理運用細則_20180928.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "機密保持に関する誓約書（入社時）誓約書202507.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "機密保持に関する誓約書（退職時）誓約書202507.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "災害等の発生時の勤務マニュアル_20230901.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ],
+    [
+      "災害等の発生時の勤務マニュアル（概要）_20230901.pdf",
+      {
+        "effective_dates": 0,
+        "revision_history": 0,
+        "scope_assets": 0,
+        "roles": 0,
+        "responsibilities": 0,
+        "prohibitions": 0,
+        "reporting_triggers": 0,
+        "required_actions": 0
+      }
+    ]
+  ]
+}

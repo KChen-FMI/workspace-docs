@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ITサポート・ポリシー一覧</title>
+  <style>
+    :root { --bg:#f7f4ef; --text:#1d1d1d; --accent:#2d5b3f; --muted:#6b6b6b; --table:#ffffff; }
+    body { font-family: 'Noto Sans JP', 'Yu Gothic UI', 'Meiryo', sans-serif; background: var(--bg); color: var(--text); margin: 24px; }
+    h1 { font-size: 22px; margin: 0 0 8px; }
+    .subtitle { color: var(--muted); margin-bottom: 16px; }
+    .filters { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); margin-bottom: 16px; }
+    .filter { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 12px; }
+    label { display:block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    input, select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+    table { width: 100%; border-collapse: collapse; background: var(--table); border-radius: 8px; overflow: hidden; }
+    th, td { border-bottom: 1px solid #e5e5e5; padding: 10px; text-align: left; font-size: 13px; vertical-align: top; }
+    th { background: #eef2ed; position: sticky; top: 0; z-index: 1; }
+    tr.hidden { display: none; }
+    .count { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+  </style>
+</head>
+<body>
+  <h1>ITサポート・ポリシー一覧</h1>
+  <div class="subtitle">テーブル3の静的HTML版（フィルタ対応）</div>
+  <div class="filters">
+    <div class="filter">
+      <label for="policyFilter">ポリシー名（部分一致）</label>
+      <input id="policyFilter" type="text" placeholder="例: 情報システム">
+    </div>
+    <div class="filter">
+      <label for="groupFilter">グループ名</label>
+      <select id="groupFilter">
+        <option value="">すべて</option>
+        <option value="ガバナンス/監査/統制">ガバナンス/監査/統制</option>
+        <option value="コンプライアンス/情報管理/IT">コンプライアンス/情報管理/IT</option>
+        <option value="リスク・文書・資産管理">リスク・文書・資産管理</option>
+        <option value="人事・労務">人事・労務</option>
+        <option value="業務運用・営業支援">業務運用・営業支援</option>
+        <option value="番号なし（協定・ガイドライン等）">番号なし（協定・ガイドライン等）</option>
+        <option value="組織・権限・会議体">組織・権限・会議体</option>
+        <option value="経理・財務">経理・財務</option>
+        <option value="貸金業運営（細則系）">貸金業運営（細則系）</option>
+      </select>
+    </div>
+    <div class="filter">
+      <label for="serviceFilter">ITサービス</label>
+      <select id="serviceFilter">
+        <option value="">すべて</option>
+        <option value="アカウント・権限管理、端末貸与/資産管理、ソフトウェア・ライセンス配布、情報セキュリティ運用">アカウント・権限管理、端末貸与/資産管理、ソフトウェア・ライセンス配布、情報セキュリティ運用</option>
+        <option value="インシデント/BCP対応">インシデント/BCP対応</option>
+        <option value="オンボーディング/オフボーディング、個人情報/機密情報管理、情報セキュリティ運用">オンボーディング/オフボーディング、個人情報/機密情報管理、情報セキュリティ運用</option>
+        <option value="ファイル共有/コラボ、情報セキュリティ運用">ファイル共有/コラボ、情報セキュリティ運用</option>
+        <option value="リモートワーク/リモートアクセス、端末貸与/資産管理、情報セキュリティ運用">リモートワーク/リモートアクセス、端末貸与/資産管理、情報セキュリティ運用</option>
+        <option value="個人情報/機密情報管理、情報セキュリティ運用">個人情報/機密情報管理、情報セキュリティ運用</option>
+        <option value="情報セキュリティ運用">情報セキュリティ運用</option>
+        <option value="文書・記録管理">文書・記録管理</option>
+        <option value="端末貸与/資産管理">端末貸与/資産管理</option>
+        <option value="該当なし">該当なし</option>
+        <option value="購買・外注管理">購買・外注管理</option>
+      </select>
+    </div>
+  </div>
+  <table id="policyTable">
+    <thead>
+      <tr><th>ポリシー（ファイル）</th><th>2桁グループ</th><th>グループ名</th><th>ITサービス</th><th>備考</th></tr>
+    </thead>
+    <tbody>
+      <tr data-policy="01-0002_フロンティア・マネジメントグループ行動準則_20200811.pdf" data-group="ガバナンス/監査/統制" data-service="該当なし">
+        <td>01-0002_フロンティア・マネジメントグループ行動準則_20200811.pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="01-0007_株主との建設的な対話の方針_20250813.pdf" data-group="ガバナンス/監査/統制" data-service="該当なし">
+        <td>01-0007_株主との建設的な対話の方針_20250813.pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="01-0010_取締役会規則_20250301.pdf" data-group="ガバナンス/監査/統制" data-service="該当なし">
+        <td>01-0010_取締役会規則_20250301.pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="01-0011_取締役会規則運用細則_20240913.pdf" data-group="ガバナンス/監査/統制" data-service="該当なし">
+        <td>01-0011_取締役会規則運用細則_20240913.pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="01-0013_指名・報酬諮問委員会規程_20250813.pdf" data-group="ガバナンス/監査/統制" data-service="該当なし">
+        <td>01-0013_指名・報酬諮問委員会規程_20250813.pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="01-0020_株式取扱規程_20180928.pdf" data-group="ガバナンス/監査/統制" data-service="該当なし">
+        <td>01-0020_株式取扱規程_20180928.pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="01-0040_新株予約権種取扱要領及び同附表_20250301.pdf" data-group="ガバナンス/監査/統制" data-service="該当なし">
+        <td>01-0040_新株予約権種取扱要領及び同附表_20250301.pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="01-0050_監査等委員会規則_20240327.pdf" data-group="ガバナンス/監査/統制" data-service="該当なし">
+        <td>01-0050_監査等委員会規則_20240327.pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="01-0070_内部監査規程_20240327.pdf" data-group="ガバナンス/監査/統制" data-service="該当なし">
+        <td>01-0070_内部監査規程_20240327.pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="01-0080_内部統制システムの基本方針_20240327.pdf" data-group="ガバナンス/監査/統制" data-service="情報セキュリティ運用">
+        <td>01-0080_内部統制システムの基本方針_20240327.pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="02-0010_組織規程_20260201.pdf" data-group="組織・権限・会議体" data-service="該当なし">
+        <td>02-0010_組織規程_20260201.pdf</td><td>02</td><td>組織・権限・会議体</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="02-0020_職務権限規程_20260201.pdf" data-group="組織・権限・会議体" data-service="該当なし">
+        <td>02-0020_職務権限規程_20260201.pdf</td><td>02</td><td>組織・権限・会議体</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="02-0021_交際費使用ガイドライン_20250813.pdf" data-group="組織・権限・会議体" data-service="該当なし">
+        <td>02-0021_交際費使用ガイドライン_20250813.pdf</td><td>02</td><td>組織・権限・会議体</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="02-0022_役職員同士の飲食費用に関するガイドライン_20250301_.pdf" data-group="組織・権限・会議体" data-service="該当なし">
+        <td>02-0022_役職員同士の飲食費用に関するガイドライン_20250301_.pdf</td><td>02</td><td>組織・権限・会議体</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="02-0030_稟議規程_20250301.pdf" data-group="組織・権限・会議体" data-service="該当なし">
+        <td>02-0030_稟議規程_20250301.pdf</td><td>02</td><td>組織・権限・会議体</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="02-0040_常務会規程_20250812.pdf" data-group="組織・権限・会議体" data-service="該当なし">
+        <td>02-0040_常務会規程_20250812.pdf</td><td>02</td><td>組織・権限・会議体</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="02-0050_経営会議規程_20250812.pdf" data-group="組織・権限・会議体" data-service="該当なし">
+        <td>02-0050_経営会議規程_20250812.pdf</td><td>02</td><td>組織・権限・会議体</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="02-0060_執行役員規程_20240214.pdf" data-group="組織・権限・会議体" data-service="該当なし">
+        <td>02-0060_執行役員規程_20240214.pdf</td><td>02</td><td>組織・権限・会議体</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="02-0070_子会社管理規程_20220801.pdf" data-group="組織・権限・会議体" data-service="該当なし">
+        <td>02-0070_子会社管理規程_20220801.pdf</td><td>02</td><td>組織・権限・会議体</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0010_就業規則_20251001改正.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0010_就業規則_20251001改正.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0020_給与規程_20250813.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0020_給与規程_20250813.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0030_給与規程運用細則_20170101.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0030_給与規程運用細則_20170101.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0040_育児介護休業等規程_20251001改正.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0040_育児介護休業等規程_20251001改正.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0040_育児休業の概要_20221001.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0040_育児休業の概要_20221001.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0050_慶弔見舞金規程_20130121.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0050_慶弔見舞金規程_20130121.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0060_出向規程_20130215.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0060_出向規程_20130215.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0070_国外出向運用細則_20250813.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0070_国外出向運用細則_20250813.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0080_表彰規程_20130121.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0080_表彰規程_20130121.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0081_懲罰規程_20250813.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0081_懲罰規程_20250813.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0082_懲罰委員会規程_20250813.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0082_懲罰委員会規程_20250813.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0090_安全衛生管理規程_20130412.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0090_安全衛生管理規程_20130412.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0100_安全衛生委員会規程_20250813.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0100_安全衛生委員会規程_20250813.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0110_能力開発支援規程_20130815.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0110_能力開発支援規程_20130815.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0111_能力開発支援規程に基づく支援対象等に関するガイドライン_20220905.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0111_能力開発支援規程に基づく支援対象等に関するガイドライン_20220905.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0120_確定拠出年金およびライフプラン手当規程_20180101.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0120_確定拠出年金およびライフプラン手当規程_20180101.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="03-0130_在宅勤務規程_20251001改正.pdf" data-group="人事・労務" data-service="リモートワーク/リモートアクセス、端末貸与/資産管理、情報セキュリティ運用">
+        <td>03-0130_在宅勤務規程_20251001改正.pdf</td><td>03</td><td>人事・労務</td><td>リモートワーク/リモートアクセス、端末貸与/資産管理、情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="03-0131_遠隔地勤務規程_20251001改正.pdf" data-group="人事・労務" data-service="リモートワーク/リモートアクセス、端末貸与/資産管理、情報セキュリティ運用">
+        <td>03-0131_遠隔地勤務規程_20251001改正.pdf</td><td>03</td><td>人事・労務</td><td>リモートワーク/リモートアクセス、端末貸与/資産管理、情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="03-0140_労使委員会運営規程_20191001.pdf" data-group="人事・労務" data-service="該当なし">
+        <td>03-0140_労使委員会運営規程_20191001.pdf</td><td>03</td><td>人事・労務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="04-0010_リスク管理体制_20250813.pdf" data-group="リスク・文書・資産管理" data-service="該当なし">
+        <td>04-0010_リスク管理体制_20250813.pdf</td><td>04</td><td>リスク・文書・資産管理</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="04-0010_リスク管理規程_20250813.pdf" data-group="リスク・文書・資産管理" data-service="該当なし">
+        <td>04-0010_リスク管理規程_20250813.pdf</td><td>04</td><td>リスク・文書・資産管理</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="04-0020_危機管理規程_20240327.pdf" data-group="リスク・文書・資産管理" data-service="インシデント/BCP対応">
+        <td>04-0020_危機管理規程_20240327.pdf</td><td>04</td><td>リスク・文書・資産管理</td><td>インシデント/BCP対応</td><td></td>
+      </tr>
+      <tr data-policy="04-0030_規程等管理規程_20250301.pdf" data-group="リスク・文書・資産管理" data-service="文書・記録管理">
+        <td>04-0030_規程等管理規程_20250301.pdf</td><td>04</td><td>リスク・文書・資産管理</td><td>文書・記録管理</td><td></td>
+      </tr>
+      <tr data-policy="04-0040_文書管理規程_20250301.pdf" data-group="リスク・文書・資産管理" data-service="文書・記録管理">
+        <td>04-0040_文書管理規程_20250301.pdf</td><td>04</td><td>リスク・文書・資産管理</td><td>文書・記録管理</td><td></td>
+      </tr>
+      <tr data-policy="04-0050_文書管理規程運用細則_20250301.pdf" data-group="リスク・文書・資産管理" data-service="文書・記録管理">
+        <td>04-0050_文書管理規程運用細則_20250301.pdf</td><td>04</td><td>リスク・文書・資産管理</td><td>文書・記録管理</td><td></td>
+      </tr>
+      <tr data-policy="04-0060_押印等取扱規程_20250301.pdf" data-group="リスク・文書・資産管理" data-service="該当なし">
+        <td>04-0060_押印等取扱規程_20250301.pdf</td><td>04</td><td>リスク・文書・資産管理</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="04-0070_購買管理規程_20250301.pdf" data-group="リスク・文書・資産管理" data-service="購買・外注管理">
+        <td>04-0070_購買管理規程_20250301.pdf</td><td>04</td><td>リスク・文書・資産管理</td><td>購買・外注管理</td><td></td>
+      </tr>
+      <tr data-policy="04-0080_固定資産管理規程_20260201.pdf" data-group="リスク・文書・資産管理" data-service="端末貸与/資産管理">
+        <td>04-0080_固定資産管理規程_20260201.pdf</td><td>04</td><td>リスク・文書・資産管理</td><td>端末貸与/資産管理</td><td></td>
+      </tr>
+      <tr data-policy="04-0090_貸与品取扱規程_20250301.pdf" data-group="リスク・文書・資産管理" data-service="端末貸与/資産管理">
+        <td>04-0090_貸与品取扱規程_20250301.pdf</td><td>04</td><td>リスク・文書・資産管理</td><td>端末貸与/資産管理</td><td></td>
+      </tr>
+      <tr data-policy="04-0090_貸与品取扱規程_貸与品取扱規程の実費負担額_20120612.pdf" data-group="リスク・文書・資産管理" data-service="端末貸与/資産管理">
+        <td>04-0090_貸与品取扱規程_貸与品取扱規程の実費負担額_20120612.pdf</td><td>04</td><td>リスク・文書・資産管理</td><td>端末貸与/資産管理</td><td></td>
+      </tr>
+      <tr data-policy="05-0010_営業管理規程_20250812.pdf" data-group="業務運用・営業支援" data-service="該当なし">
+        <td>05-0010_営業管理規程_20250812.pdf</td><td>05</td><td>業務運用・営業支援</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0020_外注管理規程_20130207.pdf" data-group="業務運用・営業支援" data-service="購買・外注管理">
+        <td>05-0020_外注管理規程_20130207.pdf</td><td>05</td><td>業務運用・営業支援</td><td>購買・外注管理</td><td></td>
+      </tr>
+      <tr data-policy="05-0040_旅費規程_20151211.pdf" data-group="業務運用・営業支援" data-service="該当なし">
+        <td>05-0040_旅費規程_20151211.pdf</td><td>05</td><td>業務運用・営業支援</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0050_国外出張旅費規程運用細則_20131220.pdf" data-group="業務運用・営業支援" data-service="該当なし">
+        <td>05-0050_国外出張旅費規程運用細則_20131220.pdf</td><td>05</td><td>業務運用・営業支援</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0060_貸金業運営管理規程_20120101.pdf" data-group="業務運用・営業支援" data-service="該当なし">
+        <td>05-0060_貸金業運営管理規程_20120101.pdf</td><td>05</td><td>業務運用・営業支援</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0010_貸金業運営管理細則その1_経営管理_20231128.pdf" data-group="貸金業運営（細則系）" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0010_貸金業運営管理細則その1_経営管理_20231128.pdf</td><td>00</td><td>貸金業運営（細則系）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0020_貸金業運営管理細則その2-1_法令遵守態勢_20231128pdf.pdf" data-group="貸金業運営（細則系）" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0020_貸金業運営管理細則その2-1_法令遵守態勢_20231128pdf.pdf</td><td>00</td><td>貸金業運営（細則系）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0021_貸金業運営管理細則その2-2_反社会的勢力による被害の防止_20231128.pdf" data-group="貸金業運営（細則系）" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0021_貸金業運営管理細則その2-2_反社会的勢力による被害の防止_20231128.pdf</td><td>00</td><td>貸金業運営（細則系）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0030_貸金業運営管理細則その3_取引時確認等の措置等_20231128.pdf" data-group="貸金業運営（細則系）" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0030_貸金業運営管理細則その3_取引時確認等の措置等_20231128.pdf</td><td>00</td><td>貸金業運営（細則系）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0040_貸金業運営管理細則その4_相談及び助言の対応態勢_20120101..pdf" data-group="貸金業運営（細則系）" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0040_貸金業運営管理細則その4_相談及び助言の対応態勢_20120101..pdf</td><td>00</td><td>貸金業運営（細則系）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0050_貸金業運営管理細則その5_苦情及び紛争等の対応態勢_20201013.pdf" data-group="貸金業運営（細則系）" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0050_貸金業運営管理細則その5_苦情及び紛争等の対応態勢_20201013.pdf</td><td>00</td><td>貸金業運営（細則系）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0060_貸金業運営管理細則その6_貸金業務取扱主任者_20201013.pdf" data-group="貸金業運営（細則系）" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0060_貸金業運営管理細則その6_貸金業務取扱主任者_20201013.pdf</td><td>00</td><td>貸金業運営（細則系）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0070_貸金業運営管理細則その7_禁止行為_20170920.pdf" data-group="貸金業運営（細則系）" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0070_貸金業運営管理細則その7_禁止行為_20170920.pdf</td><td>00</td><td>貸金業運営（細則系）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0071_貸金業運営管理細則その7-2_利息・保証料等に関する制限等_20201013.pdf" data-group="貸金業運営（細則系）" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0071_貸金業運営管理細則その7-2_利息・保証料等に関する制限等_20201013.pdf</td><td>00</td><td>貸金業運営（細則系）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0080_貸金業運営管理細則その8_契約に関する説明_20200701.pdf" data-group="貸金業運営（細則系）" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0080_貸金業運営管理細則その8_契約に関する説明_20200701.pdf</td><td>00</td><td>貸金業運営（細則系）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0090_貸金業運営管理細則その9_取引履歴の開示_20200701.pdf" data-group="貸金業運営（細則系）" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0090_貸金業運営管理細則その9_取引履歴の開示_20200701.pdf</td><td>00</td><td>貸金業運営（細則系）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0100_貸金業運営管理細則その10_営業店登録_20120101.pdf" data-group="ガバナンス/監査/統制" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0100_貸金業運営管理細則その10_営業店登録_20120101.pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0110_貸金業運営管理細則その11_過払金支払_20120101..pdf" data-group="ガバナンス/監査/統制" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0110_貸金業運営管理細則その11_過払金支払_20120101..pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0120_貸金業運営管理細則その12_書面の交付義務__20231128.pdf" data-group="ガバナンス/監査/統制" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0120_貸金業運営管理細則その12_書面の交付義務__20231128.pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0130_貸金業運営管理細則その13_個人顧客情報の安全管理措置等_20231128.pdf" data-group="ガバナンス/監査/統制" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0130_貸金業運営管理細則その13_個人顧客情報の安全管理措置等_20231128.pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0140_貸金業運営管理細則その14_取立て行為_20231128.pdf" data-group="ガバナンス/監査/統制" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0140_貸金業運営管理細則その14_取立て行為_20231128.pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0070_貸金業運営管理細則\0150_貸金業運営管理細則その15_過剰貸付けの防止_20231128.pdf" data-group="ガバナンス/監査/統制" data-service="該当なし">
+        <td>05-0070_貸金業運営管理細則\0150_貸金業運営管理細則その15_過剰貸付けの防止_20231128.pdf</td><td>01</td><td>ガバナンス/監査/統制</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="05-0080_案件資料共有マニュアル_20240901.pdf" data-group="業務運用・営業支援" data-service="ファイル共有/コラボ、情報セキュリティ運用">
+        <td>05-0080_案件資料共有マニュアル_20240901.pdf</td><td>05</td><td>業務運用・営業支援</td><td>ファイル共有/コラボ、情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="06-00100_貸倒引当金計上マニュアル_20260201.pdf" data-group="経理・財務" data-service="該当なし">
+        <td>06-00100_貸倒引当金計上マニュアル_20260201.pdf</td><td>06</td><td>経理・財務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="06-0010_経理規程_20260201.pdf" data-group="経理・財務" data-service="該当なし">
+        <td>06-0010_経理規程_20260201.pdf</td><td>06</td><td>経理・財務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="06-0020_予算管理規程_20250301.pdf" data-group="経理・財務" data-service="該当なし">
+        <td>06-0020_予算管理規程_20250301.pdf</td><td>06</td><td>経理・財務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="06-0030_金銭等出納取扱規程_20260201.pdf" data-group="経理・財務" data-service="該当なし">
+        <td>06-0030_金銭等出納取扱規程_20260201.pdf</td><td>06</td><td>経理・財務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="06-0040_財務報告に係る内部統制の構築の基本方針書_20260201.pdf" data-group="経理・財務" data-service="情報セキュリティ運用">
+        <td>06-0040_財務報告に係る内部統制の構築の基本方針書_20260201.pdf</td><td>06</td><td>経理・財務</td><td>情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="06-0050_財務報告に係る内部統制の整備･運用及び評価の基本方針書_20121115.pdf" data-group="経理・財務" data-service="情報セキュリティ運用">
+        <td>06-0050_財務報告に係る内部統制の整備･運用及び評価の基本方針書_20121115.pdf</td><td>06</td><td>経理・財務</td><td>情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="06-0060_財務報告に係る内部統制の整備・運用及び評価の基本計画書_202412.pdf" data-group="経理・財務" data-service="情報セキュリティ運用">
+        <td>06-0060_財務報告に係る内部統制の整備・運用及び評価の基本計画書_202412.pdf</td><td>06</td><td>経理・財務</td><td>情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="06-0070_決算経理マニュアル_20260201.pdf" data-group="経理・財務" data-service="該当なし">
+        <td>06-0070_決算経理マニュアル_20260201.pdf</td><td>06</td><td>経理・財務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="06-0080_勘定科目処理マニュアル_20260201.pdf" data-group="経理・財務" data-service="該当なし">
+        <td>06-0080_勘定科目処理マニュアル_20260201.pdf</td><td>06</td><td>経理・財務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="06-0090_原価計算マニュアル_20260201.pdf" data-group="経理・財務" data-service="該当なし">
+        <td>06-0090_原価計算マニュアル_20260201.pdf</td><td>06</td><td>経理・財務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="06-0090_添付　実際個別原価計算の計算方法.pdf" data-group="経理・財務" data-service="該当なし">
+        <td>06-0090_添付　実際個別原価計算の計算方法.pdf</td><td>06</td><td>経理・財務</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="07-0010_コンプライアンス規程_20241201.pdf" data-group="コンプライアンス/情報管理/IT" data-service="該当なし">
+        <td>07-0010_コンプライアンス規程_20241201.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="07-0020_内部通報規程_20241201.pdf" data-group="コンプライアンス/情報管理/IT" data-service="該当なし">
+        <td>07-0020_内部通報規程_20241201.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="07-0030_職場におけるハラスメントの防止に関する規程_20241201.pdf" data-group="コンプライアンス/情報管理/IT" data-service="該当なし">
+        <td>07-0030_職場におけるハラスメントの防止に関する規程_20241201.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="07-0050_反社会的勢力対応に関する細則_20250301.pdf" data-group="コンプライアンス/情報管理/IT" data-service="該当なし">
+        <td>07-0050_反社会的勢力対応に関する細則_20250301.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="07-0060_反社会的勢力調査マニュアル_20250301.pdf" data-group="コンプライアンス/情報管理/IT" data-service="該当なし">
+        <td>07-0060_反社会的勢力調査マニュアル_20250301.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="07-0070_不当要求対応マニュアル_20231108 .pdf" data-group="コンプライアンス/情報管理/IT" data-service="該当なし">
+        <td>07-0070_不当要求対応マニュアル_20231108 .pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="07-0080_インサイダー取引防止規程_20240327.pdf" data-group="コンプライアンス/情報管理/IT" data-service="個人情報/機密情報管理、情報セキュリティ運用">
+        <td>07-0080_インサイダー取引防止規程_20240327.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>個人情報/機密情報管理、情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="07-0080_インサイダー取引防止規程の解説_20250813.pdf" data-group="コンプライアンス/情報管理/IT" data-service="個人情報/機密情報管理、情報セキュリティ運用">
+        <td>07-0080_インサイダー取引防止規程の解説_20250813.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>個人情報/機密情報管理、情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="07-0090_情報セキュリティ基本方針_20130207.pdf" data-group="コンプライアンス/情報管理/IT" data-service="情報セキュリティ運用">
+        <td>07-0090_情報セキュリティ基本方針_20130207.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="07-0100_機密管理規程_20250812.pdf" data-group="コンプライアンス/情報管理/IT" data-service="個人情報/機密情報管理、情報セキュリティ運用">
+        <td>07-0100_機密管理規程_20250812.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>個人情報/機密情報管理、情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="07-0110_機密管理運用細則_20250812.pdf" data-group="コンプライアンス/情報管理/IT" data-service="個人情報/機密情報管理、情報セキュリティ運用">
+        <td>07-0110_機密管理運用細則_20250812.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>個人情報/機密情報管理、情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="07-0120_情報システム管理規程_20250301.pdf" data-group="コンプライアンス/情報管理/IT" data-service="アカウント・権限管理、端末貸与/資産管理、ソフトウェア・ライセンス配布、情報セキュリティ運用">
+        <td>07-0120_情報システム管理規程_20250301.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>アカウント・権限管理、端末貸与/資産管理、ソフトウェア・ライセンス配布、情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="07-0130_個人情報・特定個人情報保護規程_20250301.pdf" data-group="コンプライアンス/情報管理/IT" data-service="個人情報/機密情報管理、情報セキュリティ運用">
+        <td>07-0130_個人情報・特定個人情報保護規程_20250301.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>個人情報/機密情報管理、情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="07-0140_内部情報管理規程_20201015.pdf" data-group="コンプライアンス/情報管理/IT" data-service="個人情報/機密情報管理、情報セキュリティ運用">
+        <td>07-0140_内部情報管理規程_20201015.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>個人情報/機密情報管理、情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="07-0150_内部情報管理運用細則_20180928.pdf" data-group="コンプライアンス/情報管理/IT" data-service="個人情報/機密情報管理、情報セキュリティ運用">
+        <td>07-0150_内部情報管理運用細則_20180928.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>個人情報/機密情報管理、情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="07-0160_適時開示マニュアル_20250813.pdf" data-group="コンプライアンス/情報管理/IT" data-service="該当なし">
+        <td>07-0160_適時開示マニュアル_20250813.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="07-0170_フェア・ディスクロージャー・ルール対応マニュアル_20250813.pdf" data-group="コンプライアンス/情報管理/IT" data-service="該当なし">
+        <td>07-0170_フェア・ディスクロージャー・ルール対応マニュアル_20250813.pdf</td><td>07</td><td>コンプライアンス/情報管理/IT</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="Guideline_トレーニー受入ガイドライン(銀行・総合商社)_20220207\総合商社からのトレーニー受入ガイドライン_20220207.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>Guideline_トレーニー受入ガイドライン(銀行・総合商社)_20220207\総合商社からのトレーニー受入ガイドライン_20220207.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="Guideline_トレーニー受入ガイドライン(銀行・総合商社)_20220207\銀行からのトレーニー受入ガイドライン_20220207.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>Guideline_トレーニー受入ガイドライン(銀行・総合商社)_20220207\銀行からのトレーニー受入ガイドライン_20220207.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="【FMI】定款_20240327.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>【FMI】定款_20240327.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\【FCI】賃金控除に関する協定書.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\【FCI】賃金控除に関する協定書.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\【大阪】一斉休憩の適用除外に関する労使協定書.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\【大阪】一斉休憩の適用除外に関する労使協定書.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\【大阪】賃金控除に関する協定書.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\【大阪】賃金控除に関する協定書.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\【東京】労使協定一式（2018年8月1日）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\【東京】労使協定一式（2018年8月1日）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\フレックスタイム制に関する労使協定_大阪（2022年1月）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\フレックスタイム制に関する労使協定_大阪（2022年1月）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\フレックスタイム制に関する労使協定_東京（2022年1月）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\フレックスタイム制に関する労使協定_東京（2022年1月）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\フレックスタイム制に関する労使協定_東京（2023年3月）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\フレックスタイム制に関する労使協定_東京（2023年3月）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\フレックスタイム制に関する労使協定・東京（2020年7月）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\フレックスタイム制に関する労使協定・東京（2020年7月）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\フロンティア・マネジメント株式会社行動計画(2019年5月1日～2021年4月30日).pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\フロンティア・マネジメント株式会社行動計画(2019年5月1日～2021年4月30日).pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\労使委員会決議書_大阪.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\労使委員会決議書_大阪.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\労使委員会決議書_東京pdf.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\労使委員会決議書_東京pdf.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\大阪支店 第11回 労使員会議事録_20221223（押印済).pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\大阪支店 第11回 労使員会議事録_20221223（押印済).pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\専門型裁量労働制に関する協定届（202303-202602)_東京.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\専門型裁量労働制に関する協定届（202303-202602)_東京.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\専門業務型裁量労働制に関する協定届(202108-202407)_大阪.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\専門業務型裁量労働制に関する協定届(202108-202407)_大阪.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\専門業務型裁量労働制に関する協定届(202108-202407)_東京.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\専門業務型裁量労働制に関する協定届(202108-202407)_東京.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\専門業務型裁量労働制に関する協定届(202407-202703)_東京.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\専門業務型裁量労働制に関する協定届(202407-202703)_東京.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\従業員持株会に関する天引預入等協定書.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\従業員持株会に関する天引預入等協定書.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\時間外休日労働に関する協定届（2020年12月24日大阪）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\時間外休日労働に関する協定届（2020年12月24日大阪）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\時間外休日労働に関する協定届（2020年12月24日東京）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\時間外休日労働に関する協定届（2020年12月24日東京）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\時間外休日労働に関する協定届（2020年1月1日東京・大阪）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\時間外休日労働に関する協定届（2020年1月1日東京・大阪）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\時間外休日労働に関する協定届（2021年12月20日大阪）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\時間外休日労働に関する協定届（2021年12月20日大阪）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\時間外休日労働に関する協定届（2021年12月20日東京）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\時間外休日労働に関する協定届（2021年12月20日東京）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\時間外休日労働に関する協定届（2022年12月20日FCI）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\時間外休日労働に関する協定届（2022年12月20日FCI）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\時間外休日労働に関する協定届（2022年12月20日大阪）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\時間外休日労働に関する協定届（2022年12月20日大阪）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\時間外休日労働に関する協定届（2022年12月20日東京）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\時間外休日労働に関する協定届（2022年12月20日東京）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\時間外休日労働に関する協定届（2022年4月1日FCI）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\時間外休日労働に関する協定届（2022年4月1日FCI）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\時間外休日労働に関する協定届（2023年12月21日東京）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\時間外休日労働に関する協定届（2023年12月21日東京）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\時間外休日労働に関する協定届（2023年12月25日大阪）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\時間外休日労働に関する協定届（2023年12月25日大阪）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\時間外休日労働に関する協定届（2023年12月25日福岡）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\時間外休日労働に関する協定届（2023年12月25日福岡）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\時間外休日労働に関する協定届（2023年6月1日福岡）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\時間外休日労働に関する協定届（2023年6月1日福岡）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\時間外休日労働に関する協定書（2019年8月1日東京・大阪）.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\時間外休日労働に関する協定書（2019年8月1日東京・大阪）.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\東京本社 第11回 労使員会議事録_20221223（押印済).pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\東京本社 第11回 労使員会議事録_20221223（押印済).pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第1回労使委員会議事録_大阪.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第1回労使委員会議事録_大阪.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第1回労使委員会議事録_東京.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第1回労使委員会議事録_東京.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第2回労使委員会議事録_大阪.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第2回労使委員会議事録_大阪.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第2回労使委員会議事録_東京.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第2回労使委員会議事録_東京.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第3回労使委員会議事録_大阪.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第3回労使委員会議事録_大阪.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第3回労使委員会議事録_東京.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第3回労使委員会議事録_東京.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第4回労使委員会議事録_大阪.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第4回労使委員会議事録_大阪.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第4回労使委員会議事録_東京.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第4回労使委員会議事録_東京.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第5回労使委員会議事録_大阪.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第5回労使委員会議事録_大阪.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第5回労使委員会議事録_東京.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第5回労使委員会議事録_東京.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第6回労使委員会議事録_大阪.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第6回労使委員会議事録_大阪.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第6回労使委員会議事録_東京.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第6回労使委員会議事録_東京.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第7回労使委員会議事録_大阪 .pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第7回労使委員会議事録_大阪 .pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第7回労使委員会議事録_東京.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第7回労使委員会議事録_東京.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第8回労使委員会議事録_大阪.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第8回労使委員会議事録_大阪.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="労使協定\第8回労使委員会議事録_東京.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>労使協定\第8回労使委員会議事録_東京.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="常駐手当の支給に関するガイドライン_20251201.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>常駐手当の支給に関するガイドライン_20251201.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="従業員持株会入会のしおり_20210601.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>従業員持株会入会のしおり_20210601.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="機密保持に関する誓約書（入社時）誓約書202507.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="オンボーディング/オフボーディング、個人情報/機密情報管理、情報セキュリティ運用">
+        <td>機密保持に関する誓約書（入社時）誓約書202507.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>オンボーディング/オフボーディング、個人情報/機密情報管理、情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="機密保持に関する誓約書（退職時）誓約書202507.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="オンボーディング/オフボーディング、個人情報/機密情報管理、情報セキュリティ運用">
+        <td>機密保持に関する誓約書（退職時）誓約書202507.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>オンボーディング/オフボーディング、個人情報/機密情報管理、情報セキュリティ運用</td><td></td>
+      </tr>
+      <tr data-policy="災害等の発生時の勤務マニュアル_20230901.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="インシデント/BCP対応">
+        <td>災害等の発生時の勤務マニュアル_20230901.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>インシデント/BCP対応</td><td></td>
+      </tr>
+      <tr data-policy="災害等の発生時の勤務マニュアル（概要）_20230901.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="インシデント/BCP対応">
+        <td>災害等の発生時の勤務マニュアル（概要）_20230901.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>インシデント/BCP対応</td><td></td>
+      </tr>
+      <tr data-policy="規程一覧_20250813.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>規程一覧_20250813.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+      <tr data-policy="証跡○-取締役会規則.pdf" data-group="番号なし（協定・ガイドライン等）" data-service="該当なし">
+        <td>証跡○-取締役会規則.pdf</td><td>非番号</td><td>番号なし（協定・ガイドライン等）</td><td>該当なし</td><td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="count" id="countInfo"></div>
+  <script>
+    const policyFilter = document.getElementById('policyFilter');
+    const groupFilter = document.getElementById('groupFilter');
+    const serviceFilter = document.getElementById('serviceFilter');
+    const rows = Array.from(document.querySelectorAll('#policyTable tbody tr'));
+    const countInfo = document.getElementById('countInfo');
+
+    function applyFilters() {
+      const text = policyFilter.value.trim().toLowerCase();
+      const group = groupFilter.value;
+      const service = serviceFilter.value;
+      let visible = 0;
+      rows.forEach(r => {
+        const p = r.dataset.policy.toLowerCase();
+        const g = r.dataset.group;
+        const s = r.dataset.service;
+        const okText = !text || p.includes(text);
+        const okGroup = !group || g === group;
+        const okService = !service || s === service;
+        if (okText && okGroup && okService) {
+          r.classList.remove('hidden');
+          visible++;
+        } else {
+          r.classList.add('hidden');
+        }
+      });
+      countInfo.textContent = `表示件数: ${visible} / ${rows.length}`;
+    }
+
+    policyFilter.addEventListener('input', applyFilters);
+    groupFilter.addEventListener('change', applyFilters);
+    serviceFilter.addEventListener('change', applyFilters);
+    applyFilters();
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "doc_id": "07-0080",
+  "title": "インサイダー取引防止規程",
+  "doc_type": "規程",
+  "effective_dates": [
+    "2007-10-01"
+  ],
+  "revision_history": [
+    {
+      "date": "2007-10-01",
+      "type": "施行",
+      "note": "1 この規程は、2007年10月1日から施行する。"
+    },
+    {
+      "date": "2011-10-01",
+      "type": "改正施行",
+      "note": "2 この規程は、2011年10月1日から改正施行する。"
+    },
+    {
+      "date": "2013-03-14",
+      "type": "改正施行",
+      "note": "3 この規程は、2013年3月14日から改正施行する。"
+    },
+    {
+      "date": "2024-03-27",
+      "type": "改正施行",
+      "note": "4 この規程は、2024年3月27日から改正施行する。"
+    }
+  ],
+  "scope_assets": [],
+  "roles": [],
+  "responsibilities": [],
+  "prohibitions": [],
+  "reporting_triggers": [],
+  "required_actions": [],
+  "evidence_links": [
+    "c:\\CC.Playground\\fmi-projects\\workspace-docs\\run-book\\POC\\Testdata\\07-0080_インサイダー取引防止規程_20240327.pdf"
+  ],
+  "reviewer_notes": ""
+}

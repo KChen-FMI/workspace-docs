@@ -20,6 +20,7 @@ Use this schema for **read-only extraction** from regulation PDFs. Store output 
   "prohibitions": [],
   "reporting_triggers": [],
   "required_actions": [],
+  "reviewer_notes": "",
   "evidence_links": []
 }
 ```
@@ -27,4 +28,5 @@ Use this schema for **read-only extraction** from regulation PDFs. Store output 
 Notes:
 - `effective_dates` should include the **first** enforcement date if multiple exist.
 - `revision_history` should capture lines from 附則 / 改正履歴.
+- `reviewer_notes` is for human reviewer comments or judgments.
 - `evidence_links` should include the input file path.

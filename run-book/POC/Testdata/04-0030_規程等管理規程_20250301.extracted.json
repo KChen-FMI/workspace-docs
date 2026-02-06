@@ -1,0 +1,55 @@
+{
+  "doc_id": "04-0030",
+  "title": "規程等管理規程",
+  "doc_type": "規程",
+  "effective_dates": [
+    "2010-03-31"
+  ],
+  "revision_history": [
+    {
+      "date": "2010-03-31",
+      "type": "施行",
+      "note": "1 この規程は、2010年3月31日から施行する。"
+    },
+    {
+      "date": "2012-03-01",
+      "type": "改正施行",
+      "note": "2 この規程は、2012年3月1日から改正施行する。"
+    },
+    {
+      "date": "2013-02-07",
+      "type": "改正施行",
+      "note": "3 この規程は、2013年2月7日から改正施行する。"
+    },
+    {
+      "date": "2013-04-12",
+      "type": "改正施行",
+      "note": "4 この規程は、2013年4月12日から改正施行する。"
+    },
+    {
+      "date": "2018-05-01",
+      "type": "改正施行",
+      "note": "5 この規程は、2018年5月1日から改正施行する。"
+    },
+    {
+      "date": "2021-05-01",
+      "type": "改正施行",
+      "note": "6 この規程は、2021年5月1日から改正施行する。"
+    },
+    {
+      "date": "2021-11-12",
+      "type": "改正施行",
+      "note": "7 この規程は、2021年11月12日から改正施行する。"
+    }
+  ],
+  "scope_assets": [],
+  "roles": [],
+  "responsibilities": [],
+  "prohibitions": [],
+  "reporting_triggers": [],
+  "required_actions": [],
+  "evidence_links": [
+    "c:\\CC.Playground\\fmi-projects\\workspace-docs\\run-book\\POC\\Testdata\\04-0030_規程等管理規程_20250301.pdf"
+  ],
+  "reviewer_notes": ""
+}

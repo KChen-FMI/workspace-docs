@@ -1,0 +1,15 @@
+/* Solid background for VS Code Markdown preview */
+html, body {
+  background: #d9d9d9 !important;
+  color: #111111 !important;
+}
+
+/* Mermaid diagrams: force solid background and higher contrast text */
+.mermaid,
+.mermaid > svg {
+  background: #d9d9d9 !important;
+}
+
+.mermaid text {
+  fill: #111111 !important;
+}

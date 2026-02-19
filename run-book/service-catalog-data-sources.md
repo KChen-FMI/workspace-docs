@@ -12,7 +12,7 @@ flowchart LR
     R3[JIRAチケット]
     R4[インシデント（JIRA）]
     R5[単発プロジェクト]
-    R6[OneNote]
+    R6[OneNote KB]
   end
 
   subgraph SC[サービスカタログ]
